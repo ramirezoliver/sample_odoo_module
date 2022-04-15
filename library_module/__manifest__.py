@@ -10,6 +10,8 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
+        'views/library_book_views.xml',
+        'views/library_user_views.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [

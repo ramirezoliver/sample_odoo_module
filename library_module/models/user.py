@@ -5,6 +5,6 @@ class User(models.Model):
     _description = 'Library User'
 
     name = fields.Char("Name", required=True)
-    id = fields.Integer()
+    user_id = fields.Integer("User ID")
 
-    _sql_constraints=[('id', 'unique(id)', 'ID must be unique')]
+    _sql_constraints=[('user_id', 'unique(user_id)', 'User ID must be unique')]
