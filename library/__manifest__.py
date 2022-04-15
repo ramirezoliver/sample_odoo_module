@@ -1,8 +1,8 @@
 {
-    'name': "A Module",
+    'name': "Library",
     'version': '1.0',
     'depends': ['base'],
-    'author': "Author Name",
+    'author': "Mr. Author",
     'category': 'Category',
     'description': """
     Description text
