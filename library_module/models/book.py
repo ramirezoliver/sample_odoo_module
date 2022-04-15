@@ -5,5 +5,6 @@ class Book(models.Model):
     _name = 'library.book'
     _description = 'Library Book'
 
-    title = fields.Char("Title", required=True)
+    name = fields.Char("Title", required=True)
     release_year = fields.Integer()
+    loaned_ids = fields.One2many("library.loaned", "book_id", string="Book Loan")

@@ -19,13 +19,16 @@
             <form string="Book">
                 <sheet>
                     <h1>
-                        <field name="title" placeholder="Book Title"/>
+                        <field name="name" placeholder="Book Title"/>
                     </h1>
                     <notebook>
                         <page string="Details">
                             <group>
                                 <field name="release_year"/>
                             </group>
+                        </page>
+                        <page string="Loaned Books">
+                            <field name="loaned_ids"/>
                         </page>
                     </notebook>
                 </sheet>
