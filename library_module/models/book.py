@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class Book(models.Model):
@@ -8,3 +8,12 @@ class Book(models.Model):
     name = fields.Char("Title", required=True)
     release_year = fields.Integer()
     loaned_ids = fields.One2many("library.loaned", "book_id", string="Book Loan")
+    is_loaned = fields.Boolean(compute='_is_loaned',
+                                 store=True,
+                                 string="Is loaned",
+                                 readonly=True)
+
+    @api.depends('loaned_ids')
+    def _is_loaned(self):
+        for book in self:
+            book.is_loaned = len(book.loaned_ids) > 0

@@ -25,6 +25,7 @@
                         <page string="Details">
                             <group>
                                 <field name="release_year"/>
+                                <field name="is_loaned"/>
                             </group>
                         </page>
                         <page string="Loaned Books">
