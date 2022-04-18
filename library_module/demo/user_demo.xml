@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="library.user" id="sample_user1">
+        <field name="name">User1</field>
+    </record>
+</odoo>

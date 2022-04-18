@@ -3,6 +3,8 @@ from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta
 
 
+DEFAULT_LOAN_DURATION_DAYS = 7
+
 class LoanedBook(models.Model):
     _name = 'library.loaned'
     _description = 'Library Loaned Book'
@@ -20,7 +22,7 @@ class LoanedBook(models.Model):
 
         loan_date = datetime.strptime(values['loan_date'], datetime_format)
         if not values['due_date']:
-            values['due_date'] = loan_date + timedelta(days=7)
+            values['due_date'] = loan_date + timedelta(days=DEFAULT_LOAN_DURATION_DAYS)
 
         return super(LoanedBook, self).create(values)
 

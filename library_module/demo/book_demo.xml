@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="library.book" id="sample_book_loaned" >
+        <field name="name">Moby-Dick</field>
+        <field name="release_year">1994</field>
+    </record>
+    <record model="library.book" id="sample_book_free" >
+        <field name="name">Don Quixote</field>
+        <field name="release_year">1892</field>
+    </record>
+</odoo>

@@ -16,6 +16,9 @@
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
+        'demo/book_demo.xml',
+        'demo/user_demo.xml',
+        'demo/loaned_demo.xml',
     ],
     'css': [],
     'installable': True,
