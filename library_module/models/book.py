@@ -8,6 +8,7 @@ class Book(models.Model):
     name = fields.Char("Title", required=True)
     release_year = fields.Integer()
     loaned_ids = fields.One2many("library.loaned", "book_id", string="Book Loan")
+    image = fields.Binary("Book Image", attachment=True)
     is_loaned = fields.Boolean(compute='_is_loaned',
                                  store=True,
                                  string="Is loaned",

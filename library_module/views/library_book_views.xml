@@ -5,7 +5,7 @@
     <record model="ir.actions.act_window" id="action_library_book">
         <field name="name">Books</field>
         <field name="res_model">library.book</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,form</field>
     </record>
 
     <menuitem name="Books" id="library_book_menu" parent="library_root_menu"
@@ -18,9 +18,12 @@
         <field name="arch" type="xml">
             <form string="Book">
                 <sheet>
-                    <h1>
-                        <field name="name" placeholder="Book Title"/>
-                    </h1>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Book Title"/>
+                        </h1>
+                    </div>
                     <notebook>
                         <page string="Details">
                             <group>
@@ -34,6 +37,32 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="library_book_view_kanban" model="ir.ui.view">
+        <field name="name">library.book.view.kanban</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('library.book', 'image', record.id.raw_value)" alt="Book"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                <ul>
+                                    <li><strong>Release Year: <field name="release_year"></field></strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
