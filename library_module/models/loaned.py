@@ -21,9 +21,11 @@ class LoanedBook(models.Model):
         loan_date = datetime.strptime(values['loan_date'], datetime_format)
         if not values['due_date']:
             values['due_date'] = loan_date + timedelta(days=7)
-        else:
-            due_date = datetime.strptime(values['due_date'], datetime_format)
-            if loan_date > due_date:
-                raise ValidationError("Due date cannot be later than loan date")
 
         return super(LoanedBook, self).create(values)
+
+    @api.constrains('due_date')
+    def _check_due_date(self):
+        for record in self:
+            if record.loan_date > record.due_date:
+                raise ValidationError("Due date cannot be later than loan date!")
