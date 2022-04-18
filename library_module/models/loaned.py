@@ -1,7 +1,7 @@
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta
-
+import uuid
 
 DEFAULT_LOAN_DURATION_DAYS = 7
 
@@ -9,6 +9,7 @@ class LoanedBook(models.Model):
     _name = 'library.loaned'
     _description = 'Library Loaned Book'
 
+    name = fields.Char(size=36, default=uuid.uuid4())
     book_id = fields.Many2one("library.book", required=True)
     user_id = fields.Many2one("library.user", required=True)
     loan_date = fields.Datetime('Loan Date', default=fields.Datetime.now, required=True)
