@@ -3,23 +3,13 @@ from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, tagged
 from datetime import datetime
 
-BOOK_1 = {
-    "name": 'Moby-Dick',
-    "release_year": 1994,
-}
-
-USER_1 = {
-    "name": 'user1',
-}
-
-
 
 @tagged('-standard', 'library1')
 class TestLoan(TransactionCase):
     def setUp(self):
         super(TestLoan, self).setUp()
-        user1 = self.env['library.user'].create(USER_1)
-        book1 = self.env['library.book'].create(BOOK_1)
+        user1 = self.env.ref('library_module.sample_user1')
+        book1 = self.env.ref('library_module.sample_book_free')
         self.loan_data = {
             "book_id": book1.id,
             "user_id": user1.id,

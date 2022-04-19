@@ -4,23 +4,13 @@ from odoo.tests.common import TransactionCase, tagged
 from datetime import datetime
 
 
-BOOK_1 = {
-    "name": 'Moby-Dick',
-    "release_year": 1994,
-}
-
-USER_1 = {
-    "name": 'user1',
-}
-
-
 
 @tagged('-standard', 'library1')
 class TestBook(TransactionCase):
-    def setUp(self):
+    def setUp(self):  
         super(TestBook, self).setUp()
-        user1 = self.env['library.user'].create(USER_1)
-        self.book1 = self.env['library.book'].create(BOOK_1)
+        user1 = self.env.ref('library_module.sample_user1')
+        self.book1 = self.env.ref('library_module.sample_book_free')
         self.loan_data = {
             "book_id": self.book1.id,
             "user_id": user1.id,
