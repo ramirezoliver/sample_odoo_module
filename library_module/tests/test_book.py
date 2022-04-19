@@ -18,8 +18,10 @@ USER_1 = {
 @tagged('-standard', 'library1')
 class TestBook(TransactionCase):
     def setUp(self):
-        super(TestLoan, self).setUp()
+        super(TestBook, self).setUp()
         user1 = self.env['library.user'].create(USER_1)
+        import pdb
+        pdb.set_trace()
         self.book1 = self.env['library.book'].create(BOOK_1)
         self.loan_data = {
             "book_id": self.book1.id,
@@ -31,5 +33,5 @@ class TestBook(TransactionCase):
 
     def test_is_loaned(self):
         self.assertFalse(self.book1.is_loaned)
-        self.env['library.loaned'].create(loan_data)
+        self.env['library.loaned'].create(self.loan_data)
         self.assertTrue(self.book1.is_loaned)
