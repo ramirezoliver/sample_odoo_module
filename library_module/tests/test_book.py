@@ -20,8 +20,6 @@ class TestBook(TransactionCase):
     def setUp(self):
         super(TestBook, self).setUp()
         user1 = self.env['library.user'].create(USER_1)
-        import pdb
-        pdb.set_trace()
         self.book1 = self.env['library.book'].create(BOOK_1)
         self.loan_data = {
             "book_id": self.book1.id,
