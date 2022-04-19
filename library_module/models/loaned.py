@@ -9,7 +9,7 @@ class LoanedBook(models.Model):
     _name = 'library.loaned'
     _description = 'Library Loaned Book'
 
-    name = fields.Char(size=36, default=uuid.uuid4())
+    name = fields.Char(size=36)
     book_id = fields.Many2one("library.book", required=True)
     user_id = fields.Many2one("library.user", required=True)
     loan_date = fields.Datetime('Loan Date', default=fields.Datetime.now, required=True)
@@ -19,6 +19,7 @@ class LoanedBook(models.Model):
 
     @api.model
     def create(self, values):
+        values['name'] = uuid.uuid4()
         datetime_format = '%Y-%m-%d %H:%M:%S'
 
         loan_date = datetime.strptime(values['loan_date'], datetime_format)
